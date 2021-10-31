@@ -41,24 +41,23 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         mainViewModel.init();
 
+        //When a change to the items list occurs, the obserer will call the onChanged method.
         mainViewModel.getItems().observe(this, new Observer<List<Item>>() {
             @Override
             public void onChanged(@Nullable List<Item> items) {
                 recyclerAdapter.notifyDataSetChanged();
                 initRecyclerView();
-                //Log.d("Data", "Changed");
             }
         });
 
         initRecyclerView();
 
     }
+    //Initializes a RecyclerView
     private void initRecyclerView(){
         recyclerAdapter = new RecyclerAdapter(this, (ArrayList<Item>) mainViewModel.getItems().getValue());
-        //Log.d("calling", "the new recycleadapter");
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        //Log.d("setting", "the recycleadapter");
         recyclerView.setAdapter(recyclerAdapter);
     }
 }

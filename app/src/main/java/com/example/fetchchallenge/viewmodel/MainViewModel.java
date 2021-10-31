@@ -8,12 +8,13 @@ import com.example.fetchchallenge.model.Item;
 import com.example.fetchchallenge.repository.ItemRepository;
 
 import java.util.List;
-
+//MainViewModel contains all information necessary to create our user interface in the Main Activity
 public class MainViewModel extends ViewModel {
 
     private MutableLiveData<List<Item>> items;
     private ItemRepository repo;
 
+    //Allows our ViewModel to access the items list from the ItemRepository
     public void init(){
         if(items != null){
             return;
@@ -25,18 +26,5 @@ public class MainViewModel extends ViewModel {
     public LiveData<List<Item>> getItems(){
         return items;
     }
-
-    /*public LiveData<List<Item>> filterNull(){
-
-    }
-
-    public LiveData<List<Item>> sortByListId(){
-
-    }
-
-    public LiveData<List<Item>> sortByName(){
-
-    }*/
-
 
 }

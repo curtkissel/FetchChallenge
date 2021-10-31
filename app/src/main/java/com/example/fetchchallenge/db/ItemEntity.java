@@ -14,4 +14,10 @@ public class ItemEntity {
 
     @ColumnInfo(name = "name")
     public String name;
+
+    public ItemEntity(int id, int listId, String name) {
+        this.id=id;
+        this.listId=listId;
+        this.name=name;
+    }
 }
